@@ -1,0 +1,26 @@
+public class Main {
+    public static void main(String[] args) {
+        //Declarar String
+        String cadena = "Hola";
+        String cadena2 = new String("mundo");
+
+        //Concatenación
+        String concatenacion = cadena + " " + cadena2;
+        System.out.println(concatenacion);
+
+        //Concatenación con valores enteros
+        int edad = 18;
+        System.out.println("Tu edad es " + edad);
+
+        int a = 2;
+        int b = 3;
+        System.out.println("La suma es " + (a+b));
+
+        //Concatenar con operador concat
+        String str_concat = cadena.concat(" " + cadena2);
+        str_concat = str_concat.concat(" " + a);
+
+        //Longitud (length)
+        int long_strconcat = str_concat.length();
+    }
+}
