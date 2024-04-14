@@ -1,3 +1,76 @@
+public class Disco {
+    /**
+     *  Crea una clase Disco con atributos codigo, autor, titulo, genero y duración (en valor entero). La clase debe tener un
+     *  constructor parametrizado que reciba por parámetro el valor de todos los atributos; además debe tener los métodos
+     *  de acceso a ellos;
+     */
+    private String codigo;
+    private String autor;
+    private String genero;
+    private int duracion;
+
+    public Disco() {
+    }
+
+    public Disco(String codigo, String autor, String genero, int duracion) {
+        this.codigo = codigo;
+        this.autor = autor;
+        this.genero = genero;
+        this.duracion = duracion;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public void setAutor(String autor) {
+        this.autor = autor;
+    }
+
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
+    public int getDuracion() {
+        return duracion;
+    }
+
+    public void setDuracion(int duracion) {
+        this.duracion = duracion;
+    }
+    /**
+     * y método toString que devuelva un String con la información del disco y sobreescriba el método
+     *      *  equals y devuelva un boolean y los objetos tienen el mismo código de disco.
+     */
+    public String toString() {
+        return "Disco{" +
+                "codigo='" + this.codigo + '\'' +
+                ", autor='" + this.autor + '\'' +
+                ", genero='" + this.genero + '\'' +
+                ", duracion=" + this.duracion + " minutos" +
+                '}';
+    }
+
+    public boolean equals(Disco disco) {
+        if (disco == null) {
+            return false;
+        }
+        return this.codigo.equals(disco.getCodigo());
+    }
+}
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
