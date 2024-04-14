@@ -1,0 +1,102 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner lectura = new Scanner(System.in);
+        /**
+         * Crea un programa principal en que almacenes al menos 3 discos en un ArrayList. Muestra al usuario un menú con
+         * las siguientes opciones:
+         * 1. Listado: Esta opción mostrará la información de los discos
+         * 2. Nuevo Disco: Esta opción pedirá los datos del disco y añadirá uno nuevo al ArrayList
+         * 3. Modificar: Esta opción pedirá el código del disco cuya información desee modificar, tendrá que pedir todos
+         * los datos del disco y actualizarlos.
+         * 4. Borrar: Eliminará un disco del ArrayList. Para ello deberá solicitar el código del disco a eliminar.
+         * 5. Salir: Finalizará el programa mostrando una despedida
+         */
+        Disco disco1 = new Disco("4533F", "Pepe Roll", "Rock", 82);
+        Disco disco2 = new Disco("2321S", "Domingo Alonso", "Pop", 65);
+        Disco disco3 = new Disco("3022G", "Marcos Ramos", "Clasica", 94);
+        ArrayList<Disco> Discos = new ArrayList();
+        Discos.add(disco1);
+        Discos.add(disco2);
+        Discos.add(disco3);
+        System.out.println("1. Listado:");
+        System.out.println("2. Nuevo Disco");
+        System.out.println("3. Modificar");
+        System.out.println("4. Borrar");
+        System.out.println("5. Salir");
+        int opcion = lectura.nextInt();
+        switch (opcion) {
+            case 1:
+                for (int i = 0; i < Discos.size(); i++) {
+                    System.out.println(Discos.get(i).toString());
+                }
+                break;
+            case 2:
+                System.out.println("Introduce el código del nuevo disco");
+                String codigo = lectura.next();
+                System.out.println("Introduce el autor del nuevo disco");
+                String autor = lectura.next();
+                System.out.println("Introduce el genero del nuevo disco");
+                String genero = lectura.next();
+                System.out.println("Indique en minutos la duración del nuevo disco");
+                int duracion = lectura.nextInt();
+                Disco discoNuevo = new Disco(codigo, autor, genero, duracion);
+                Discos.add(discoNuevo);
+                System.out.println("Se ha añadido correctamente el disco de " + autor);
+                break;
+            case 3:
+                System.out.println("Introduce el código del disco a modificar");
+                String cod = lectura.next();
+                Disco discoAModificar = null;
+                // Buscar el disco con el código especificado
+                for (int i = 0; i < Discos.size(); i++) {
+                    if (Discos.get(i).getCodigo().equals(cod)) {
+                        discoAModificar = Discos.get(i);
+                        break;
+                    }
+                }
+                // Verificar si se encontró el disco con el código especificado
+                if (discoAModificar != null) {
+                    System.out.println("Introduce el autor del disco");
+                    String autor1 = lectura.next();
+                    discoAModificar.setAutor(autor1);
+                    System.out.println("Introduce el genero del disco");
+                    String genero1 = lectura.next();
+                    discoAModificar.setGenero(genero1);
+                    System.out.println("Indique en minutos la duración del nuevo disco");
+                    int duracion1 = lectura.nextInt();
+                    discoAModificar.setDuracion(duracion1);
+                    System.out.println("Se ha modificado el disco, los datos son: ");
+                    System.out.println(discoAModificar.toString());
+                } else {
+                    System.out.println("ERROR! El código introducido no coincide con ningún disco");
+                }
+                break;
+            case 4:
+                System.out.println("Introduce el código del disco a eliminar");
+                String cogEliminar = lectura.next();
+                Disco discoAEliminar = null;
+                boolean discoEncontrado = false;
+                for (int i = 0; i < Discos.size(); i++) {
+                    if (Discos.get(i).getCodigo().equals(cogEliminar)) {
+                        discoAEliminar = Discos.get(i);
+                        Discos.remove(discoAEliminar);
+                        discoEncontrado = true;
+                        System.out.println("Se ha eliminado el disco");
+                        break;
+                    }
+                }
+                if (discoEncontrado == false) {
+                    System.out.println("El código introducido no coincide con ningún disco");
+                }
+                break;
+            case 5:
+                System.out.println("Gracias por utilizar la bibloteca de Spotify");
+                break;
+            default:
+                System.out.println("Lo sentimos, la opción no es válida");
+        }
+    }
+}
